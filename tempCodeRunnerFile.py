@@ -1,0 +1,2 @@
+
+total = subtotal + subtotal * tax

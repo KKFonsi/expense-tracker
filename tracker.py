@@ -1,7 +1,9 @@
-# Module 0 - Laboratory 1
-# Installment 2: Talking to the User
+# Module 2 - Laboratory 3
+# Installment 3: The Tracker Does Math
 # Author: Kevin Kyle S. Alfon
-# Description: Collects and summarizes input from user for two expenses.
+# Description: Includes and calculates the expenses, tax, total, and budget.
+
+subtotal = 0.00
 
 print('=' * 40)
 print("EXPENSE TRACKER".center(40))
@@ -17,18 +19,28 @@ name = input("\nWelcome, what should we call you? ")
 print(f"Welcome, {name}! Let's log two expenses.\n")
 item1 = input("What's your first item? ")
 amount1 = float(input("What's the amount? "))
+subtotal += amount1
 item2 = input("What's your second item? ")
 amount2 = float(input("What's the amount? "))
+subtotal += amount2
+tax_percent = float(input("Tax rate %? "))
+budget = float(input("Your budget? "))
 
-total = amount1 + amount2
-average = total / 2
+average = subtotal / 2
+tax = subtotal * (tax_percent / 100)
+total = subtotal + tax
+over_budget = total > budget
+left = budget - total
 
-print()
-print('-' * 40)
+print('\n' + '-' * 40)
 print("SUMMARY")
-print(f"{f'  - {item1}:':<28}₱{amount1:.2f}")
-print(f"{f'  - {item2}:':<28}₱{amount2:.2f}")
-print(f"{'TOTAL SPENT:':<28}₱{total:.2f}")
-print(f"{'Average:':<28}₱{average:.2f}")
+print(f"  - {item1}:\t\t\t${amount1:.1f}")
+print(f"  - {item2}:\t\t\t${amount2:.1f}")
+print(f"Subtotal:\t\t\t${subtotal:.1f}")
+print(f"Average:\t\t\t${average:.1f}")
+print(f"Tax ({tax_percent:.1f}%):\t\t\t${tax:.1f}")
+print(f"Grand total:\t\t\t${total:.1f}")
+print(f"Over budget?\t\t\t{over_budget}")
+print(f"Left in budget:\t\t\t${left:.1f}")
 print('-' * 40)
-print(f"Made by: {name} | Installment 2")
+print("Made by: Kevin Kyle S. Alfon | Installment 3")
